@@ -8,7 +8,7 @@ CAN_md_mini::CAN_md_mini(CAN &can, int motor_num)
             _can.mode(CAN::Normal);
 }
 
-int CAN_md_mini::send(int *speed){ // とりあえずモーター1個分だけ
+int CAN_md_mini::send(int *speed){
     for(int _id = 0; _id < _motor_num; _id++){
         _msg.id = 0x300 + _id;
         _msg.len = 8;
