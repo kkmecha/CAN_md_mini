@@ -1,4 +1,3 @@
-// 制御値の符号を取って送信する必要がある
 #include "CAN_md_mini.h"
 #include <cstdint>
 #include <cmath>
