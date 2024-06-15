@@ -1,6 +1,3 @@
-// brake_flag, rotate_direction_flag, control_signal(top 8bit, subordinate 8bit)
-//    0, 1              0, 1        
-
 #ifndef __INCLUDE_CAN_MD_MINI_H__
 #define __INCLUDE_CAN_MD_MINI_H__
 
