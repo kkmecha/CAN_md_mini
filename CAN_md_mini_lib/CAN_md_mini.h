@@ -7,8 +7,8 @@
 
 class CAN_md_mini{
     public:
-        CAN_md_mini(CAN &can, char motor_num);
-        int send(int speed);
+        CAN_md_mini(CAN &can, int motor_num);
+        int send(int *speed);
     private:
         enum Brake_mask{
             Rotate,
@@ -22,8 +22,7 @@ class CAN_md_mini{
         CANMessage _msg;
         bool _over;
         uint32_t _id_ptr = 0x0800F800;
-        int _motor_max, _i;
-        char _motor_id, _motor_num;
+        int _i, _motor_num;
         
 };
 
