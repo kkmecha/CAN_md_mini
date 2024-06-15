@@ -2,11 +2,10 @@
 #include <cstdint>
 #include <cmath>
 
-CAN_md_mini::CAN_md_mini(CAN &can, char motor_num) 
+CAN_md_mini::CAN_md_mini(CAN &can, int motor_num) 
         : _can(can), _motor_num(motor_num) {
             _can.frequency(1000000);
             _can.mode(CAN::Normal);
-            _motor_max = 10000;
 }
 
 int CAN_md_mini::send(int *speed){ // とりあえずモーター1個分だけ
