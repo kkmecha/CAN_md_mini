@@ -21,11 +21,6 @@ class CAN_md_mini{
     };
     CAN &_can;
     CANMessage _msg;
-    // bool _over;
-    // uint32_t _id_ptr = 0x0800F800;
-    char _byte_top[_motor_num], _byte_lower[_motor_num];
-    int _id, _abs_speed[_motor_num];
-    
     int _i, _motor_num;   
 };
 
