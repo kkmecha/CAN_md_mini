@@ -9,17 +9,38 @@ CAN_md_mini::CAN_md_mini(CAN &can, int motor_num)
 }
 
 int CAN_md_mini::send(int *speed){
-    for(int i = 0; i < motor_num; i++){
+    int _abs_speed[_motor_num];
+
+    for(int i = 0; i < _motor_num; i++){
+        _msg.id = 0x301 + i;
+        _msg.len = 8;
+
         _abs_speed[i] = abs(speed[i]);
+        if(_abs_speed[i] >= 10000){
+            return -1;
+        }
+        if(0 < speed[i]){
+            _msg.data[0] = Rotate;
+            _msg.data[1] = CW;
+        }else if(speed[i] < 0){
+            _msg.data[0] = Rotate;
+            _msg.data[1] = CCW;
+        }else{
+            _msg.data[0] = Brake;
+            _msg.data[1] = CW;
+            _abs_speed[i] = 0;
+        }
 
-        if(_abs_speed[i] >= 10000) return -1;
-        _byte_top[i] = (_abs_speed[i] >> 8);
-        _byte_lower[i] = (_abs_speed[i] & 0xff);
+        _msg.data[2] = ((_abs_speed[i] >> 8) & 0xff);
+        _msg.data[3] = (_abs_speed[i] & 0xff);
 
+        for(i = 4 ; i < 8; i++){
+            _msg.data[i] = 0;
+        }   
         
+        if(!_can.write(_msg)){
+            return -1;
+        }      
     }
-
-    _msg.id = 0x300;
-    _msg.len = 8;
-
+    return 1;
 }
