@@ -8,7 +8,7 @@ CAN_md_mini::CAN_md_mini(CAN &can, int motor_num)
         _can.mode(CAN::Normal);
 }
 
-int CAN_md_mini::send(int *speed){
+int CAN_md_mini::send(int* speed){
     int _abs_speed[_motor_num];
 
     for(int i = 0; i < _motor_num; i++){
