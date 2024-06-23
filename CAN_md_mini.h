@@ -8,7 +8,7 @@
 class CAN_md_mini{
     public:
     CAN_md_mini(CAN &can, int motor_num);
-    int send(int *speed);
+    int send(int* speed);
 
     private:
     enum Brake_mask{
