@@ -31,8 +31,8 @@ int CAN_md_mini::send(int *speed){
             _abs_speed[i] = 0;
         }
 
-        _msg.data[2] = ((_abs_speed[i] >> 8) & 0xff);
-        _msg.data[3] = (_abs_speed[i] & 0xff);
+        _msg.data[2] = (char)(_abs_speed[i] >> 8);
+        _msg.data[3] = (char)(_abs_speed[i] & 0xff);
 
         for(i = 4 ; i < 8; i++){
             _msg.data[i] = 0;
