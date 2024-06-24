@@ -17,22 +17,24 @@ int CAN_md_mini::send(int* speed){
 
         _abs_speed[i] = abs(speed[i]);
         if(_abs_speed[i] > 10000){
-            return -1;
+            _msg.data[1]=1;
+        }else{
+            _msg.data[1]=0;
         }
         if(0 < speed[i]){
             _msg.data[0] = Rotate;
-            _msg.data[1] = CW;
+            _msg.data[2] = CW;
         }else if(speed[i] < 0){
             _msg.data[0] = Rotate;
-            _msg.data[1] = CCW;
+            _msg.data[2] = CCW;
         }else{
             _msg.data[0] = Brake;
-            _msg.data[1] = CW;
+            _msg.data[2] = CW;
             _abs_speed[i] = 0;
         }
 
-        _msg.data[2] = (char)(_abs_speed[i] >> 8);
-        _msg.data[3] = (char)(_abs_speed[i] & 0xff);
+        _msg.data[3] = (char)(_abs_speed[i] >> 8);
+        _msg.data[4] = (char)(_abs_speed[i] & 0xff);
 
         
         if(!_can.write(_msg)){
