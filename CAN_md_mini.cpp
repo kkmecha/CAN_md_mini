@@ -16,7 +16,7 @@ int CAN_md_mini::send(int* speed){
         _msg.len = 8;
 
         _abs_speed[i] = abs(speed[i]);
-        if(_abs_speed[i] >= 10000){
+        if(_abs_speed[i] > 10000){
             return -1;
         }
         if(0 < speed[i]){
