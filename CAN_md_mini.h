@@ -5,6 +5,7 @@
 #include <cstdint>
 #include <cmath>
 
+#define free 1
 class CAN_md_mini{
     public:
     CAN_md_mini(CAN &can, int motor_num);
