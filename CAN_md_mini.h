@@ -13,7 +13,7 @@ class CAN_md_mini{
     private:
     enum Brake_mask{
         Rotate,
-        Brake,
+        Free,
     };
     enum Direction_mask{
         CW,
