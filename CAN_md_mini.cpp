@@ -12,7 +12,7 @@ int CAN_md_mini::send(int* speed){
     int _abs_speed[_motor_num];
 
     for(int i = 0; i < _motor_num; i++){
-        _msg.id = 0x301 + i;
+        _msg.id = 769 + i;
         _msg.len = 8;
 
         _abs_speed[i] = abs(speed[i]);
